@@ -1,0 +1,23 @@
+:host {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 1em;
+    background: #eee;
+    color: #0782D1;
+    font-weight: bold;
+}
+
+/* use parenthesis to add selectors to the host element */
+:host(.is-cool) {
+    /* ... */
+}
+
+/* this will only apply to p tags in the shadow root */
+p {
+    color: green;
+}
+
+/* targeting distributed nodes (<p> tags in the <content>) */
+::content p {
+    /* ... */
+}

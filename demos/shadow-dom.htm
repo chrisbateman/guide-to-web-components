@@ -1,0 +1,82 @@
+<!doctype html>
+<head>
+    <title>Shadow DOM</title>
+    <style>
+    body {
+        font-family: sans-serif;
+    }
+    div {
+        border: 1px solid #aaa;
+    }
+    p {
+        color: green;
+    }
+    </style>
+</head>
+<body>
+    <h1>Shadow DOM</h1>
+    
+    
+    
+    <h2>Demo 1</h2>
+
+    <div id="demo1"></div>
+    
+    
+    <script>
+        var el = document.getElementById('demo1');
+        
+        var shadow = el.createShadowRoot();
+        
+        var shadowHTML = '<style>p {text-decoration: underline;}</style>';
+        shadowHTML += '<p>These paragraphs are in a shadow root.</p>';
+        shadowHTML += '<p>They are unaffected by the paragraph styles on the page.</p>';
+        shadowHTML += '<p>But they do inherit inheritable properties, like font-family.</p>';
+        shadowHTML += '<p>And styles defined inside the shadow root - (an underline in this case) - don\'t affect the rest of the page.</p>';
+        // This uses a <style> tag, but you can also use a CSS @import rule.
+        // You cannot use a <link> tag!
+        
+        shadow.innerHTML = shadowHTML;
+    </script>
+    
+    
+    <p>A paragraph on the page.</p>
+    
+    
+    
+    <!----------------------->
+    
+    
+    
+    <h2 style="margin-top:2em;">Demo 2</h2>
+    
+    <div id="demo2">
+        <p class="demo">two</p>
+        <p>three</p>
+        <p class="demo">four</p>
+    </div>
+    
+    <script>
+        var el = document.getElementById('demo2');
+        
+        // When you add a shadow root to an element,
+        // any other children of the element become invisible and unselectable
+        var shadow = el.createShadowRoot();
+        
+        // But if the shadow root has a <content> element,
+        // those elements can be displayed as if they were at that
+        // location in the shadow root - but they're not actually part of the 
+        // shadow root. They're still selectable and affected by page styles.
+        var shadowHTML = '<style>p {text-decoration:underline;}</style>';
+        shadowHTML += '<content select=".demo"></content>';
+        shadowHTML += '<content></content>';
+        shadowHTML += '<p>one (actually in the shadow root)</p>'
+        
+        // Note that you can add a "select" attribute to the <content> tag, 
+        // to choose which elements to reflow through it.
+        // The <content> without a "select" picks up the leftovers.
+        
+        shadow.innerHTML = shadowHTML;
+    </script>
+    
+</body>

@@ -1,0 +1,23 @@
+<!doctype html>
+<head>
+    <title>HTML Imports</title>
+    
+    <link rel="import" href="import-demo/import-file.htm" />
+</head>
+<body>
+    <h1>HTML Imports</h1>
+    
+    <p>This green color comes from a stylesheet in the import.</p>
+    
+    
+    
+    <script>
+    // you can grab elements from the import if you need
+    var link = document.querySelector('link');
+    var importP = link.import.querySelector('p');
+    
+    console.log(importP.innerHTML);
+    
+    </script>
+    
+</body>

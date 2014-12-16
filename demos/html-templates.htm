@@ -1,0 +1,30 @@
+<!doctype html>
+<head>
+    <title>HTML Templates</title>
+</head>
+<body>
+    <h1>HTML Templates</h1>
+    
+    <div id="container" style="border:1px solid #aaa;"></div>
+    
+    
+    
+    <template id="template">
+        <h2>This is our template content.</h2>
+        <p>Lorem ipsum dolor sit amet</p>
+    </template>
+    
+    
+    <script>
+    var template = document.getElementById('template');
+    
+    // template.content will refer to a document fragment
+    // we need to clone it before we insert it, so it can be reused
+    var clone = document.importNode(template.content, true); // "true" means to do a deep clone
+    
+    document.getElementById('container').appendChild(clone);
+    
+    // that's it!
+    </script>
+    
+</body>

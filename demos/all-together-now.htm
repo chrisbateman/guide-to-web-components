@@ -1,0 +1,34 @@
+<!doctype html>
+<head>
+    <title>Web Components Demo &ndash; All 4 Specs</title>
+    
+    <style>
+	body {
+		font-family: sans-serif;
+	}
+	p {
+		color: red;
+	}
+	</style>
+	
+	
+	<link rel="import" href="all-together-demo/my-demo.htm">
+	
+</head>
+
+<body>
+	
+	<h1>Web Components Demo &ndash; All 4 Specs</h1>
+
+	
+	<my-demo demo="Try changing the demo attribute!">
+		<p>A paragraph outside the shadow root.</p>
+	</my-demo>
+	
+	<div style="margin:1em 0;">
+		<button onclick="document.querySelector('my-demo').talk();">Call .talk() on the &lt;my-demo&gt;</button>
+	</div>
+	
+	<p>lorem ipsum</p>
+	
+</body>

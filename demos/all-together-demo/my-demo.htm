@@ -1,0 +1,59 @@
+<!doctype html>
+<template id="t">
+	<style> @import "all-together-demo/my-demo.css";</style>
+	
+	<h2>This is a &lt;my-demo&gt;.</h2>
+	<content></content>
+	<p>A paragraph inside the shadow root.</p>
+	<div id="attr"></div>
+</template>
+
+
+<script>
+(function() {
+	
+	var importDoc = document.currentScript.ownerDocument;
+	var template = importDoc.getElementById('t');
+	
+	
+	var demoProto = Object.create(HTMLElement.prototype);
+	
+	// lifecycle callbacks
+	demoProto.createdCallback = function() {
+		var clone = document.importNode(template.content, true);
+		
+		// shadow dom
+		var shadow = this.createShadowRoot();
+		shadow.appendChild(clone);
+		
+		this._attr = shadow.getElementById('attr');
+		this._attr.innerHTML = this.getAttribute('demo');
+	};
+	
+	demoProto.attachedCallback = function() {
+		// add event listeners here
+	};
+	
+	demoProto.detachedCallback = function() {
+		// remove event listeners here
+	};
+	
+	demoProto.attributeChangedCallback = function(attr, oldVal, newVal) {
+	    if (attr === 'demo') {
+	        this._attr.innerHTML = newVal;
+	    }
+	};
+	
+	
+	// methods
+	demoProto.talk = function() {
+		alert('Howdy!');
+	};
+	
+	
+	document.registerElement('my-demo', {
+		prototype: demoProto
+	});
+	
+})();
+</script>
