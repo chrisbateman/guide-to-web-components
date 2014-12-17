@@ -111,7 +111,7 @@ If not &ndash; Polymer does have a tool called [Vulcanize](https://github.com/po
 - `document.currentScript.ownerDocument` will point to the importing page's document, rather than the (original) import document.
 - Anything in the import other than templates, CSS, and JS will be removed. Which is probably fine if you're just using Imports for Web Components.
 
-**Bottom line:** The general point of Imports is to give you an *easy* way to get a component's dependencies on a page. If you already have a solution for that &ndash; you might be fine to keep with it. The biggest thing you'll miss is the ability to store HTML Templates in the Import. But at least [ES6 template strings](http://tc39wiki.calculist.org/es6/template-strings/) will make templates in JS less painful.
+**Bottom line:** The general point of Imports is to give you an *easy* way to get a component's dependencies on a page. If you already have a solution for that &ndash; then you can just stick with it. You won’t have a good place to store HTML Templates, but that’s okay because [ES6 template strings](http://tc39wiki.calculist.org/es6/template-strings/) will make templates in JS much less painful.
 
 
 ## Accessibility
@@ -199,3 +199,4 @@ Libaries like [Polymer](https://www.polymer-project.org/) were developed to solv
 However, they also seem to violate one of the objectives of Web Components, which is reusability. If you want to build a component that can be reused in a variety of environments, keeping your dependencies to a minimum is usually a good thing. I'm not sure I'm comfortable with forcing another largeish (Polymer is ~37KB, gzipped) dependency on everyone who might want to use my component. 
 
 *However*, if you want to develop components to be used in environments that *you* control, I'd feel much better about a library like Polymer, and it'd probably be fairly helpful. [X-Tag](http://x-tags.org/) is another alternative which provides a neat wrapper for creating Custom Elements (and they don't even bother with Shadow DOM, which is perfect).
+
