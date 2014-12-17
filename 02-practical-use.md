@@ -181,15 +181,15 @@ This still lets you take advantage of Custom Elements' lifecycle callbacks and e
 
 ## Conclusions
 
-Here are my conclusions, based on the topics we've discussed:
+Here are my overall conclusions, based on the topics we've discussed:
 
 - **Custom Elements** are helpful, and fairly easy to polyfill.
-- **HTML Imports** have too many caveats right now (particularly around performance), and Firefox isn't going to do it (I kind of doubt Safari will either). I agree with them that it's too soon to try to get this solution right. In the meanwhile &ndash; our current solutions for including resources will have to do.
+- **HTML Imports** have too many caveats right now (particularly around performance), polyfill browser support isn't ideal, and Firefox isn't going to do it (I kind of doubt Safari will either). I agree with them that it's too soon to try to get this solution right. In the meanwhile &ndash; our current solutions for including resources will have to do.
 - Polyfilled **Shadow DOM** has *way* too many caveats, and the polyfill is big (and especially slow on mobile devices). Shadow DOM will be useful someday when broad browser support is available.
 
 So I'm left with Custom Elements (this was TJ's [conclusion](http://developer.telerik.com/featured/web-components-ready-production/) as well). They're the only spec that's polyfillable on all the older platforms I'd like to support (IE 9, Android 4.3 and below, etc.), and I love the lifecycle callbacks and the "semantic" and clean way you use them on a page.
 
-My suggestion to you is to try it out &ndash; build a component with Custom Elements, and see how it works in your environment. When Shadow DOM is ready, you can add it &ndash; so just keep that potential future state in mind as you build components.
+My suggestion is to try it out &ndash; build some components with Custom Elements, and see how they work in your environment. When Shadow DOM is ready, you can add it &ndash; so just keep that potential future state in mind as you build components.
 
 
 ### A note on frameworks/libraries
