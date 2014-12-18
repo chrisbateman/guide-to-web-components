@@ -33,7 +33,7 @@ All browsers (except for IE) have implmented HTML Templates. For the remaining s
 
 ### What's going on here?
 
-When Chrome shipped Web Components &ndash; without a flag &ndash; [they](http://w3cmemes.tumblr.com/post/75694930387/googles-new-approach-to-standards-strives-for) [pretty](http://w3cmemes.tumblr.com/post/75701219807/ghost-of-christmas-yet-to-come-hath-an-ultimatum) [well](http://w3cmemes.tumblr.com/post/75681559100/chrome-team-rapidly-evolving-into-superior-race) [ticked](http://w3cmemes.tumblr.com/post/75717243955/live-from-the-uss-google-quick-update-on-shadow) [off](http://w3cmemes.tumblr.com/post/75719091769/you-non-googlers-misunderstand-everything-we-say) all the other browser makers, who felt that the specs weren't done baking yet. They're pretty diplomatic about it &ndash; they routinely say things like, "mail me privately for my feelings on the matter," because their feelings probably involve a number of expletives.
+When Chrome shipped Web Components &ndash; without a flag &ndash; [they](http://w3cmemes.tumblr.com/post/75694930387/googles-new-approach-to-standards-strives-for) [pretty](http://w3cmemes.tumblr.com/post/75701219807/ghost-of-christmas-yet-to-come-hath-an-ultimatum) [much](http://w3cmemes.tumblr.com/post/75681559100/chrome-team-rapidly-evolving-into-superior-race) [ticked](http://w3cmemes.tumblr.com/post/75717243955/live-from-the-uss-google-quick-update-on-shadow) [off](http://w3cmemes.tumblr.com/post/75719091769/you-non-googlers-misunderstand-everything-we-say) all the other browser makers, who felt that the specs weren't done baking yet. They're fairly diplomatic about the Chrome situation &ndash; routinely saying things like, "mail me privately for my feelings on the matter," because their feelings probably involve a number of expletives.
 
 How's it all going to pan out? Will the adjustments Safari and Firefox want be possible when Chrome has already shipped? Will everyone get on the same page anytime soon? I wish I had answers to these questions. Web standards are complicated things. Tune in next year (or the next) to find out!
 
@@ -56,7 +56,7 @@ Custom Elements is the easist to polyfill of all the specs &ndash; down to IE 9 
 
 ### HTML Templates ([native support](http://caniuse.com/#feat=template))
 
-The webcomponents.js polyfill works down to IE 9 and Android 2 (and aren't needed in other modern browsers).
+The webcomponents.js polyfill works down to IE 9 and Android 2 (and isn't needed in other modern browsers).
 
 **Caveat**: Polyfilled templates aren't truly inert &ndash; resources like images will still download.
 
@@ -86,7 +86,7 @@ The webcomponents.js code *attempts* to shim *some* of the encapsulation feature
 - CSS rules in the page will still apply to elements in the (fake) shadow root. It's like everything gets a `/deep/`.
 - To use `::shadow` and `/deep/` CSS rules in the page, you must add the `shim-shadowdom` attribute to the `<style>` or `<link>`.
   - Even then, `::shadow` rules will behave like `/deep/` rules anyhow.
-- To include CSS in a shadow root, you have to add some JS to the component to check whether the Shadow Dom shim is in effect, and if so, grab the css text, run it through the a shimming function, add the resulting CSS text to the document, and delete the original CSS.
+- To include CSS in a shadow root, you have to add some JS to the component to check whether the Shadow Dom shim is in effect, and if so, grab the css text, run it through a shimming function, add the resulting CSS text to the document, and delete the original CSS.
   - You don't have to do all this if you're using Polymer and its wrapper/syntax. But native syntax doesn't cut it.
 - `::content` rules in the shadow root will apply to everything in the shadow root &ndash; not just children of `<content>` elements.
 - When using `<content>`, DOM hierchy will be different in polyfilled browsers. Normally, elements selected by `<content>` would be children of the root element, but in polyfilled browsers they will be children of the `<content>`'s parent. You can certainly work around this &ndash; but it's an additional thing to keep in mind as you write your component's JS.
@@ -179,12 +179,14 @@ This still lets you take advantage of Custom Elements' lifecycle callbacks and e
   - But remember the Imports polyfill doesn't do synchronous loading.
 
 
-## Conclusions
+## What to Do?
 
-Here are my overall conclusions, based on the topics we've discussed:
+First off &ndash; the lack of consensus between the browser makers is concerning, all-around. Firefox and Safari (and probably IE) want to see changes made before they ship &ndash; but we don't know what those changes will look like.
+
+Having said that, here are my overall conclusions:
 
 - **Custom Elements** are helpful, and fairly easy to polyfill.
-- **HTML Imports** have too many caveats right now (particularly around performance), polyfill browser support isn't ideal, and Firefox isn't going to do it (I kind of doubt Safari will either). I agree with them that it's too soon to try to get this solution right. In the meanwhile &ndash; our current solutions for including resources will have to do.
+- **HTML Imports** have too many caveats right now (particularly around performance), polyfill browser support isn't ideal, and Firefox isn't going to do it (I kind of doubt Safari will either). They may be right that it's too soon to try to finalize this solution. In the meanwhile &ndash; our current solutions for including resources will have to do.
 - Polyfilled **Shadow DOM** has *way* too many caveats, and the polyfill is big (and especially slow on mobile devices). Shadow DOM will be useful someday when broad browser support is available.
 
 So I'm left with Custom Elements (this was TJ's [conclusion](http://developer.telerik.com/featured/web-components-ready-production/) as well). They're the only spec that's polyfillable on all the older platforms I'd like to support (IE 9, Android 4.3 and below, etc.), and I love the lifecycle callbacks and the "semantic" and clean way you use them on a page.
