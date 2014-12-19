@@ -67,7 +67,7 @@ The webcomponents.js polyfill works down to IE 9 and Android 4.4 (some things li
 
 **Caveat #1**: Polyfilled imports load asynchronously, even if you didn't add the `async` attribute. 
 
-**Caveat #2**: They load via XHR &ndash; which isn't great for performance (compared to native Imports).
+**Caveat #2**: They load via XHR &ndash; which isn't great for performance.
 
 **Caveat #3**: `document.currentScript`, which is needed in the import to access templates (or other elements) in the import, can't be polyfilled. It is, however, shimmed with `_currentScript`. So, to write code that works in both supported and polyfilled browsers, you must do this:
 
@@ -198,7 +198,7 @@ My suggestion is to try it out &ndash; build some components with Custom Element
 
 Libaries like [Polymer](https://www.polymer-project.org/) were developed to solve a number of common tasks related to Custom Elements (and the other specs). Things like easy attribute binding, smarter templating, and events.
 
-However, they also seem to violate one of the objectives of Web Components, which is reusability. If you want to build a component that can be reused in a variety of environments, keeping your dependencies to a minimum is usually a good thing. I'm not sure I'm comfortable with forcing another largeish (Polymer is ~37KB, gzipped) dependency on everyone who might want to use my component. 
+However, they almost seem to violate one of the objectives of Web Components, which is reusability. If you want to build a component that can be reused in a variety of environments, keeping your dependencies to a minimum is usually a good thing. I'm not sure I'm comfortable with forcing another largeish (Polymer is ~37KB, gzipped) dependency on everyone who might want to use my component. 
 
 But if you want to develop components to be used in environments that *you* control, I'd feel much better about a library like Polymer, and it'd probably be fairly helpful. [X-Tag](http://x-tags.org/) is another alternative which provides a neat wrapper for creating Custom Elements (and they don't even bother with Shadow DOM, which is fine by me). And if you really want to start writing CSS for Shadow DOM, you might want to take a look at [Bosonic](http://bosonic.github.io/), which transpiles your CSS on the server (rather than in the browser, as Polymer does).
 
