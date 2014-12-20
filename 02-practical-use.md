@@ -25,7 +25,7 @@ All browsers (except for IE) have implmented HTML Templates. For the remaining s
 
 <!-- "It is not being shipped because we are not confident in the current specification, we offer it as an experimental API to collect feedback from developers" ([8/15/2014](https://bugzilla.mozilla.org/show_bug.cgi?id=889230#c9))-->
 
-- **Safari** removed Google's Web Components code (in 2/2014) leftover from before Blink forked, and has yet to begin any new implementations. While not opposed to implementing something in the future, they're clearly not satisfied with the current specs. Their position is probably similar to that of Firefox.
+- **Safari** removed Google's Web Components code (in 2/2014) leftover from before Blink forked, and has yet to begin any new implementations. While not opposed to implementing something in the future, they're clearly not satisfied with the current specs.
 > "There is no way I'm implementing the version [of Custom Elements] that's incompatible with ES6 classes" ([11/1/2014](https://twitter.com/ryosukeniwa/status/528774230532292609))
 
 - **Internet Explorer**'s [status for all specs](https://status.modern.ie/) has been "under consideration" for about 6 months (as of 12/2014). They've been pulling out some surprises for IE 12, but so far it seems safe to say that Web Components won't be there.
